@@ -5,7 +5,8 @@ Ce projet a pour objectif de créer une application internet permettant aux util
 
 ---
 
-Contenu du projet
+#Contenu du projet
+
 
 Base de données : logement.sql
 Ce fichier contient toutes les commandes SQL pour :
@@ -14,32 +15,11 @@ Ce fichier contient toutes les commandes SQL pour :
 - Ajouter des logements, des pièces, des capteurs, des types de capteurs, des mesures et des factures.
 
 
-
-
-
-Commandes pour initialiser la base de données :
-$ sqlite3 logement.db
-sqlite> .read logement.sql
-
-
-
-
-
 Fichier Python : remplissage.py
 Ce fichier permet d'ajouter des mesures et des factures à la base de données logement.db.
-Exécution :
-$ python remplissage.py
-
-
-
 
 
 Serveur REST : serveurREST.py
-
-Ce fichier constitue le serveur construit avec FastAPI. Il permet :
-- De consulter et d'ajouter des mesures et des factures.
-- D'afficher des graphiques et des tableaux basés sur les données de la base de données.
-- D'obtenir des prévisions météo via une API externe.
 
 
 
@@ -60,26 +40,69 @@ Dossiers et fichiers :
 4. Images
    - Contient les fichiers d'image utilisés dans le site.
 
-Pages web :
-1. Consommation : Affiche des graphiques de consommation (électricité, eau, déchets) selon des échelles de temps.
-2. État des capteurs : Montre les informations des capteurs installés dans les pièces du logement.
-3. Comparatifs économiques : Présente les économies réalisées sous forme de graphiques.
-4. Configuration : Permet d'ajouter de nouveaux capteurs à la base de données.
 
----
+
+
+--------
 
 Instructions d'utilisation
 
-1. Initialisation de la base de données :
-Exécutez les commandes suivantes :
-$ sqlite3 logement.db
-sqlite> .read logement.sql
-($ python remplissage.py)
+
+
+## Dépendances utilisées dans le projet:
+
+- FastAPI : Utilisée pour créer et gérer l’API du projet.
+- HTMLResponse : permet de retourner des pages HTML en réponse aux requêtes.
+- Pydantic : Utilisée pour valider les données des requêtes entrantes.
+- sqlite3 : Permet de gérer la base de données SQLite pour stocker les données du projet.
+- typing : Utilisée pour définir les types de données, comme les listes dans les réponses.
+- os : Permet de vérifier ou gérer des fichiers dans le système.
+- httpx : Utilisée pour effectuer des requêtes HTTP vers des API externes.
+- StaticFiles : Permet de servir des fichiers statiques, comme le CSS et le JavaScript.
 
 
 
-2. Navigation dans le site :
-Page d'accueil (index.html) : Accédez à la page d'accueil via http://127.0.0.1:5500/WEBSITE/index.html
+
+## 1ERE ETAPE: INITIALISATION DE LA BASE DE DONNEES:
+
+
+- Télécharger SQLite : https://www.sqlite.org/download.html
+
+- Une fois SQLite installé, ouvrez un terminal et initialisez la base de données en utilisant la commande :
+
+				sqlite3 logement.db
+
+
+- Dans le même terminal, charger les tables depuis le fichier logement.sql :
+				
+				.read logement.sql
+
+
+
+## 2EME ETAPE : LANCER LE SERVEUR
+
+1. Python 3.8 doit être installé pour faire fonctionner le serveur. 
+2. Créer un environnement virtuel (tutoriel : https://fastapi.tiangolo.com/tutorial/#run-the-code)
+		
+3. Une fois l’environnement virtuel activé, installez les bibliothèques nécessaires :
+				bash: 
+				pip install fastapi uvicorn httpx
+
+4. Lancer le serveur: 
+				bash: 
+				fastapi dev serveurREST.py
+
+
+
+
+----
+
+# Navigation dans le site :
+
+Une fois le serveur lancé, nous pouvons naviguer facilement sur le site web créé. 
+
+
+Page d'accueil (index.html) : Accédez à la page d'accueil via http://127.0.0.1:8000/
 Pages fonctionnelles :
 - Consommation : http://127.0.0.1:8000/consommation/chart
 - État des capteurs : http://127.0.0.1:8000/mesures/view
@@ -88,7 +111,7 @@ Pages fonctionnelles :
 
 ---
 
-Fonctionnalités du site web
+# Fonctionnalités du site web
 
 1. Visualisation de la consommation :
    - Affiche des graphiques de consommation énergétique (électricité, eau, déchets) basés sur les données réelles de la base de données.
