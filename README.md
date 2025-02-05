@@ -1,6 +1,6 @@
 EISE4 TP IoT - Logement éco-responsable
 
-Description du projet
+
 Ce projet a pour objectif de créer une application internet permettant aux utilisateurs de visualiser leur consommation (électricité, eau, etc.), de voir les économies réalisées, d'afficher l'état des capteurs, et de configurer les capteurs liés à leur logement éco-responsable.
 
 ---
